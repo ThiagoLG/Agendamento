@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<link rel="SHORTCUT ICON" href="img/favicon.ico"></link>
+	<title>Agendar</title>
+	<link href="css/style.css" rel="stylesheet"></link>
+	<script>
+		PrimeFaces.locales['pt'] = {
+			closeText : 'Fechar',
+			prevText : 'Anterior',
+			nextText : 'Próximo',
+			currentText : 'Começo',
+			monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+					'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+					'Novembro', 'Dezembro' ],
+			monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+					'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+			dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+					'Sexta', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+			dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+			weekHeader : 'Semana',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Só Horas',
+			timeText : 'Tempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			currentText : 'Data Atual',
+			ampm : false,
+			month : 'Mês',
+			week : 'Semana',
+			day : 'Dia',
+			allDayText : 'Todo Dia'
+		};
+	</script>
+</h:head>
+<h:body>
+	<h:form>
+		<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+			<section>
+				<div id="conteudo6">
+					<h3>
+						É a sua primeira vez aqui?
+						<h:outputLink value="cadastrarCliente.xhtml">
+							<u>Cadastre o seu CPF</u>
+						</h:outputLink>
+					</h3>				
+					<h1>Agende um horário! Preencha os campos abaixo:</h1>
+
+					<h:form id="formBody">
+						<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" globalOnly="true" for="formBody" />
+						<p:growl id="growl" showDetail="false" sticky="true" />
+						<table>
+							<tr>
+								<td><span class="lbl">Serviço / Profissional:</span></td>
+							</tr>
+							<tr>
+								<td><h:inputText class="caixaTexto" id="txtEspec"
+										value="#{agendamentoMB.especialidade.descricao}"
+										readonly="true"
+										requiredMessage="Campo serviço / Profissional obrigatório!" />
+								</td>
+							</tr>
+							<tr>
+								<td><span class="lbl">CPF:</span></td>
+							</tr>
+							<tr>
+								<td>
+									<h:inputText class="caixaTexto" id="txtNome"
+										value="#{agendamentoMB.agendamento.cpf}" required="true"
+										requiredMessage="Campo cpf obrigatório!">
+										<f:convertNumber integerOnly="true" minIntegerDigits="11"/>
+									</h:inputText>	
+										
+								</td>
+							</tr>
+							<tr>
+								<td><span class="lbl">Data:</span></td>
+							</tr>
+							<tr id="zoomp">
+								<td><p:calendar beforeShowDay="function(date){
+														var day = date.getDay();
+														if(day==0 || day==1){
+															return [false];
+														}
+														else{
+															return [true];
+														}
+												}"
+										class="caixaTexto2" id="inline" mode="inline" locale="pt"
+										showButtonPanel="true" navigator="true"
+										value="#{agendamentoMB.agendamento.data}" mindate="new Date()"
+										required="true" requiredMessage="Campo data obrigatório!">
+										
+										<p:ajax listener="#{agendamentoMB.carregarHorarios}" update="cbbHorarios" />
+										
+									</p:calendar> <h:commandButton class="botao4" value="Clique para carregar os horários"
+										action="#{agendamentoMB.carregarHorarios}" required="true" />
+								</td>
+							</tr>
+							<tr>
+								<td><span class="lbl">Horário:</span></td>
+							</tr>
+							<tr>
+								<td><h:selectOneMenu class="caixaTexto"
+										value="#{agendamentoMB.agendamento.horario}" id="cbbHorarios">
+										<f:selectItems value="#{agendamentoMB.horariosDisponiveis}" />
+									</h:selectOneMenu></td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td><h:commandButton class="botao" value="Agendar"
+										action="#{agendamentoMB.cadastrar}" /></td>
+								<td><h:commandButton class="botao" value="Limpar"
+										action="#{agendamentoMB.limparCampos}" /></td>
+							</tr>
+						</table>
+					</h:form>
+					<h4>
+						Está com dificuldade? Acesse o
+						<h:outputLink value="manual.xhtml">
+							<u>Manual do Sistema</u>
+						</h:outputLink>
+					</h4>	
+				</div>
+			</section>
+			<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect - Todos os
+				direitos reservados.</footer>
+		</div>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<meta charset="UTF-8" />
+<h:head>
+	<link rel="SHORTCUT ICON" href="img/favicon.ico" />
+	<link href="css/style.css" rel="stylesheet" />
+	<title>Manual do Sistema</title>
+</h:head>
+<h:body>
+	<h:form>
+		<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+			<section>
+				<div id="conteudo4">
+					<h1>Manual do Sistema</h1>
+
+					<p id="t1">
+						<b>Para criar um novo agendamento:</b> Acesse o sistema, identifique a loja onde quer marcar o agendamento e selecione o profissional e serviço que deseja usar, a seguir preencha o campo com seu CPF que já deve estar cadastrado no sistema, selecione uma data e clique em [ok] para ver os horários disponíveis para aquele dia, selecione um horário e clique em agendar. Anote o seu número de protocolo, ele é o identificador do seu agendamento. Você irá receber um email informando que o agendamento foi marcado com sucesso.
+					</p>
+					<p id="t2">
+						<b>Para ter acesso ao telefone das lojas e saber a localização:</b> A qualquer momento você pode consultar os mapas das lojas e consultar o telefone de cada uma delas, basta acessar o item “Contato” no canto superior direito da página.
+					</p>
+					<p id="t3">
+						<b>Para alterar os dados de um agendamento:</b> Entre na área do cliente com o seu CPF e o número de protocolo do seu agendamento, altere os dados como desejar e confirme.
+					</p>
+					<p id="t4">
+						<b>Para cancelar um agendamento:</b> Entre na área do cliente com o seu CPF e o número de protocolo do seu agendamento, confirme os dados e exclua o agendamento.
+					</p>
+
+				</div>
+			</section>
+			<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect - Todos os
+				direitos reservados.</footer>
+		</div>
+	</h:form>
+</h:body>
+</html>

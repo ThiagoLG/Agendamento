@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<link rel="SHORTCUT ICON" href="img/favicon.ico"></link>
+	<link href="css/style.css" rel="stylesheet"></link>
+	<title>Login</title>
+</h:head>
+<h:body>
+	<h:form id="formBody">
+		<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+			<section id="pequena">
+				<div id="conteudo">
+					<fieldset>
+						<legend>Login</legend>
+						<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" globalOnly="true" />
+						<p:growl id="growl" showDetail="false" sticky="true" />
+						<table>
+							<tr>
+								<td class="etiqueta">Usuário:</td>
+								<td><h:inputText id="txtUsuario" value="#{loginMB.usuario}"
+										required="true" requiredMessage="Campo usuário deve ser preenchido" /></td>
+							</tr>
+							<tr>
+								<td class="etiqueta">Senha:</td>
+								<td><h:inputSecret id="txtSenha" value="#{loginMB.senha}"
+										required="true" requiredMessage="Campo senha deve ser preenchido" /></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><h:commandButton class="botao" id="botaoUnicoLogin"
+										value="Logar" action="#{loginMB.logar}" /></td>
+							</tr>
+						</table>
+					</fieldset>
+				</div>
+			</section>
+			<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect - Todos os
+				direitos reservados.</footer>
+		</div>
+	</h:form>
+</h:body>
+</html>

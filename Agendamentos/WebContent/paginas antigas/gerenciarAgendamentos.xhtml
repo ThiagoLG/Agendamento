@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>gerenciamento de agendamentos</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<tr>
+				<td><h:outputText value="Nome do cliente" /></td>
+				<td><h:inputText id="txtNome"
+						value="#{agendamentoMB.agendamento.nome}" /></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="Data" /></td>
+				<td><p:calendar id="popup"
+						value="#{agendamentoMB.agendamento.data}">
+					</p:calendar></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Especialidade" /></td>
+				<td><h:selectOneMenu id="cbbEspecialidades"
+						value="#{agendamentoMB.especialidade.id_especialidade}"
+						style="comboBox">
+						<f:selectItems value="#{agendamentoMB.lstEspecialidade}"
+							var="especialidade" itemValue="#{especialidade.id_especialidade}"
+							itemLabel="#{especialidade.descricao}" />
+					</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<h:commandButton value="Pesquisar por nome"
+					action="#{agendamentoMB.pesquisarNome}" />
+				<h:commandButton value="Pesquisar por data"
+					action="#{agendamentoMB.pesquisarData}" />
+			</tr>
+			<h:dataTable value="#{agendamentoMB.lstAgendamentos}"
+				var="agendamento" style="border-style:solid;" border="0">
+
+				<h:column>#{agendamento.nomeEspec}
+			<f:facet name="header">Especialidade</f:facet>
+				</h:column>
+
+				<h:column>#{agendamento.nome}
+			<f:facet name="header">Nome</f:facet>
+				</h:column>
+
+				<h:column>#{agendamento.email}
+			<f:facet name="header">Email</f:facet>
+				</h:column>
+
+				<h:column>#{agendamento.telefone}
+			<f:facet name="header">Telefone</f:facet>
+				</h:column>
+
+				<h:column>
+					<h:outputText value="#{agendamento.data}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+					<f:facet name="header">Data</f:facet>
+				</h:column>
+
+				<h:column>#{agendamento.horario}
+			<f:facet name="header">Horario</f:facet>
+				</h:column>
+
+				<h:column>
+					<h:commandButton value="Confirmar"
+						action="#{agendamentoMB.confirmarAgendamento (agendamento)}" />
+					<f:facet name="header">Confirmar</f:facet>
+				</h:column>
+
+				<h:column>
+					<h:commandButton value="Não confirmar"
+						action="#{agendamentoMB.naoConfirmarAgendamento (agendamento)}" />
+					<f:facet name="header">Não Confirmar</f:facet>
+				</h:column>
+
+				<h:column>#{agendamento.status}
+			<f:facet name="header">Status</f:facet>
+				</h:column>
+
+				<h:column>#{agendamento.avisado}
+			<f:facet name="header">Avisado</f:facet>
+				</h:column>
+
+				<h:column>
+					<h:commandButton value="Editar"
+						action="#{agendamentoMB.carregarCampos (agendamento)}" />
+					<f:facet name="header">Editar</f:facet>
+				</h:column>
+
+				<h:column>
+					<h:commandButton value="Remover"
+						action="#{agendamentoMB.removerAgendamento (agendamento)}" />
+					<f:facet name="header">Remover</f:facet>
+				</h:column>
+
+			</h:dataTable>
+			<tr>
+				<td><h:outputText value="Nome:" /></td>
+				<td><h:inputText id="txtNomeEdit"
+						value="#{agendamentoMB.agEdit.nome}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Email:" /></td>
+				<td><h:inputText id="txtEmail"
+						value="#{agendamentoMB.agEdit.email}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Telefone:" /></td>
+				<td><h:inputText id="txtTelefone"
+						value="#{agendamentoMB.agEdit.telefone}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Data:" /></td>
+				<td><p:calendar id="dataConsulta"
+						value="#{agendamentoMB.agEdit.data}">
+					</p:calendar></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="Horario:" /></td>
+				<td><h:selectOneMenu value="#{agendamentoMB.agEdit.horario}"
+						id="cbbHorarios">
+						<f:selectItems value="#{agendamentoMB.horariosDisponiveis}" />
+					</h:selectOneMenu></td>
+				<td><h:commandButton value="clica aqui"
+						action="#{agendamentoMB.carregarHorarios}" /></td>
+			</tr>
+			<tr>
+				<td><h:commandButton value="Atualizar"
+						action="#{agendamentoMB.atualizar}" /></td>
+				<td><h:commandButton value="enviar email"
+						action="#{agendamentoMB.enviarEmail}" /></td>
+			</tr>
+
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

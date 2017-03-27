@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<meta charset="UTF-8" />
+<h:head>
+	<link rel="SHORTCUT ICON" href="img/favicon.ico" />
+	<link href="css/style.css" rel="stylesheet" />
+	<title>Área restrita</title>
+</h:head>
+<h:body>
+	<h:form>
+		<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+			<section id="pequena">
+				<div id="conteudo2">
+				<h3>Está com dificuldade? Acesse o <h:outputLink value="manual2.xhtml"><u>Manual do Sistema</u></h:outputLink></h3>
+					<fieldset>
+						<legend>Agendamento</legend>
+						<ul>
+							<li><h:outputLink value="anularDia.xhtml">
+									<f:verbatim>Anular dia</f:verbatim>
+								</h:outputLink></li>
+							<li><h:outputLink value="gerenciarAgendamentos.xhtml">
+									<f:verbatim>Gerenciar Agendamentos</f:verbatim>
+								</h:outputLink></li>
+						</ul>
+					</fieldset>
+					<fieldset>
+						<legend>Profissional</legend>
+						<ul>
+							<li><h:outputLink value="adicionarProfissional.xhtml">
+									<f:verbatim>Adicionar</f:verbatim>
+								</h:outputLink></li>
+							<li><h:outputLink value="pesquisarProfissional.xhtml">
+									<f:verbatim>Aterar/Excluir</f:verbatim>
+								</h:outputLink></li>
+						</ul>
+					</fieldset>
+					<h:commandButton value="Sair" class="botao" action="#{loginMB.deslogar}"/>
+				</div>
+			</section>
+			<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect - Todos os
+				direitos reservados.</footer>
+		</div>
+	</h:form>
+</h:body>
+</html>

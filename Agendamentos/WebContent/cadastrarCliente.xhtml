@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<link rel="SHORTCUT ICON" href="img/favicon.ico"></link>
+	<title>Cadastro de cliente</title>
+	<link href="css/style.css" rel="stylesheet"></link>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/calendarioPersonalizado.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://digitalbush.com/wp-content/uploads/2014/10/jquery.maskedinput.js"></script>
+	<script>
+		$("#txtCpf").mask("999.999.999-99");
+	</script>
+</h:head>
+<h:body>
+	<h:form>
+		<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+			<section id="pequena">
+				<div id="conteudo3">
+					<h1>Preencha os campos para efetuar o cadastro:</h1>
+
+					<h:form id="formBody">
+						<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" globalOnly="true" for="formBody" />
+						<p:growl id="growl" showDetail="false" sticky="true" />
+						<table>
+							<tr>
+								<td><span class="lbl">CPF:</span></td>
+							</tr>
+							<tr>
+								<td>
+									<h:inputText class="caixaTexto" id="txtCpf"
+										value="#{agendamentoMB.cliente.cpf}" required="true"
+										requiredMessage="Campo CPF obrigatório!">
+										<f:convertNumber integerOnly="true" minIntegerDigits="11"/>
+									</h:inputText>	
+								</td>
+							</tr>
+
+							<tr>
+								<td><span class="lbl">Nome:</span></td>
+							</tr>
+							<tr>
+								<td><h:inputText class="caixaTexto" id="txtNome"
+										value="#{agendamentoMB.cliente.nome}" required="true"
+										requiredMessage="Campo nome obrigatório!" /></td>
+							</tr>
+
+
+							<tr>
+								<td><span class="lbl">Telefone:</span></td>
+							</tr>
+							<tr>
+								<td><h:inputText class="caixaTexto" id="txtTelefone"
+										value="#{agendamentoMB.cliente.telefone}" required="true"
+										requiredMessage="Campo telefone obrigatório!" /></td>
+							</tr>
+
+
+							<tr>
+								<td><span class="lbl">Email:</span></td>
+							</tr>
+							<tr>
+								<td><h:inputText class="caixaTexto" id="txtEmail"
+										value="#{agendamentoMB.cliente.email}" required="true"
+										requiredMessage="Campo email obrigatório!" /></td>
+							</tr>
+
+						</table>
+						<table id="afastaUltimo">
+							<tr>
+								<td><h:commandButton class="botao" value="Confirmar"
+										action="#{agendamentoMB.cadastrarCliente}" /></td>
+								<td><h:commandButton class="botao" value="Limpar"
+										action="#{agendamentoMB.limparCampos}" /></td>
+							</tr>
+						</table>
+					</h:form>
+					<h5>
+						Está com dificuldade? Acesse o
+						<h:outputLink value="manual.xhtml">
+							<u>Manual do Sistema</u>
+						</h:outputLink>
+					</h5>
+				</div>
+			</section>
+			<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect - Todos os
+				direitos reservados.</footer>
+		</div>
+	</h:form>
+</h:body>
+</html>

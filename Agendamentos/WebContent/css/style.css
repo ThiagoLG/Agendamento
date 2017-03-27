@@ -1,0 +1,270 @@
+body{
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+	font-family: Century Gothic;
+	background-color: #FFFFFF;
+}
+.container{
+}
+
+#submenu{
+	font-size: 24px;
+	text-align: right;
+	margin-right:30px;
+	bottom: 25%;
+	position: relative;
+}
+#submenu li{
+	list-style: none;
+	display: inline;
+}
+
+header {
+    padding: 0;
+    color: white;
+    background-color: #0066FF;
+    text-align: center;
+	height: 210px;
+}
+header a:link{
+	color: white;
+	text-decoration: none;
+}
+header a:hover{
+	font-weight: bold;
+	text-decoration: none;
+}
+header a:visited{
+	color: white;
+	text-decoration: none;
+}
+header a:active{
+	color: red;
+	text-decoration: none;
+}
+#logonovo{
+	height: 161px;
+	width: 494px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+
+}
+section{
+	
+}
+#pequena{
+	height: 850px;
+}
+#mapas{
+	height: 1200px;
+}
+#paginaMaior{
+	height: 950px;
+}
+#paginaMaior2{
+	height: 1020px;
+}
+#grande{
+	height: 1200px;
+}
+section #conteudo{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+	margin: auto;
+	top:30%;
+    position:relative;
+	zoom: 140%;
+}
+section #conteudo2{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin: auto;
+	top:15%;
+	text-align: center;
+    position:relative;
+	margin-top:10%;
+	zoom: 140%;
+}
+section #conteudo3{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin: auto;
+	top:5%;
+	text-align: center;
+    position:relative;
+	zoom: 140%;    
+}
+section #conteudo4{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+	margin: auto;
+	top:20%;
+    position:relative;
+	zoom: 140%;    
+}
+section #conteudo5{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin: auto;
+	top:5%;
+	text-align: center;
+    position:relative;    
+}
+section #conteudo6{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin: auto;
+	top:5%;
+	text-align: center;
+    position:relative;
+	zoom: 140%;    
+}
+#zoomp{
+	zoom: 150%;
+}
+table{
+	margin:auto;
+}
+#selectIndexApp{
+	width:300px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+select{
+	width:300px;
+	height: 40px;
+	margin-bottom: 20px;
+	font-size: 24px
+}
+h1{
+	font-size: 28px;
+}
+.lbl{
+	font-size: 28px;
+}
+fieldset legend{
+	text-align:left;
+	font-weight:bold;
+	font-size: 24px;
+}
+fieldset table{
+	margin: auto;
+}
+fieldset{
+	text-align:left;
+	margin-bottom: 50px;
+}
+fieldset ul{
+	list-style:none;
+}
+fieldset li{
+	display: inline;
+	border: 1px solid black;
+	padding: 5px;
+	margin-right: 10px;
+}
+.etiqueta{
+	font-size: 24px;
+	font-weight: none;
+}
+#afastaUltimo{
+	margin-top:20px;
+}
+.caixaTexto{
+	width:300px;
+	height: 40px;
+}
+.botao{
+	background-color: #0066FF ; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.botao2{
+	background-color: #0066FF ; 
+    border: none;
+    color: white;
+    padding: 8px 21px;
+    margin-left: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.botao3{
+	background-color: #0066FF ; 
+    border: none;
+    color: white;
+    padding: 8px 21px;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.botao4{
+	background-color: #0066FF ; 
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+#botaoUnico{
+	text-align: center;
+}
+#botaoUnicoLogin{
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+input, select{
+	font-size: 24px;
+}
+a:link{
+	color: black;
+	text-decoration: none;
+}
+a:hover{
+	font-weight: bold;
+	text-decoration: none;
+}
+a:visited{
+	color: black;
+	text-decoration: none;
+}
+a:active{
+	color: red;
+	text-decoration: none;
+}
+footer {
+    padding: 1em;
+    color: white;
+    background-color: #0066FF  ;
+    clear: left;
+    text-align: center;
+}
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<link rel="SHORTCUT ICON" href="img/favicon.ico"></link>
+	<title>Alterar Agendamento</title>
+	<link href="css/style.css" rel="stylesheet"></link>
+	<script>
+		PrimeFaces.locales['pt'] = {
+			closeText : 'Fechar',
+			prevText : 'Anterior',
+			nextText : 'Próximo',
+			currentText : 'Começo',
+			monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+					'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+					'Novembro', 'Dezembro' ],
+			monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+					'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+			dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+					'Sexta', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+			dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+			weekHeader : 'Semana',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Só Horas',
+			timeText : 'Tempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			currentText : 'Data Atual',
+			ampm : false,
+			month : 'Mês',
+			week : 'Semana',
+			day : 'Dia',
+			allDayText : 'Todo Dia'
+		};
+	</script>
+</h:head>
+<h:body>
+	<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+		<section>
+			<div id="conteudo6">
+				<h1>Altere os campos e confirme!</h1>
+				<h:form id="formBody">
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" globalOnly="true" />
+					<p:growl id="growl" showDetail="false" sticky="true" />
+					<table>
+						<tr>
+							<td><span class="lbl">Serviço / Profissional:</span></td>
+						</tr>
+						<tr>
+							<td><h:inputText class="caixaTexto" id="txtEspec"
+									value="#{agendamentoMB.agendamento.descServProf}"
+									readonly="true" /></td>
+						</tr>
+						<tr>
+							<td><span class="lbl">CPF:</span></td>
+						</tr>
+						<tr>
+							<td><h:inputText class="caixaTexto" id="txtCpf"
+									value="#{agendamentoMB.agendamento.cpf}" required="true"
+									requiredMessage="Campo CPF obrigatório!" disabled="true" /></td>
+						</tr>
+						<tr>
+							<td><span class="lbl">Nome:</span></td>
+						</tr>
+						<tr>
+							<td><h:inputText class="caixaTexto" id="txtNome"
+									value="#{agendamentoMB.agPesquisa.nome}" required="true"
+									requiredMessage="Campo CPF obrigatório!" disabled="true" /></td>
+						</tr>
+						<tr>
+							<td><span class="lbl">Data:</span></td>
+						</tr>
+						<tr id="zoomp">
+							<td><p:calendar
+									beforeShowDay="function(date){
+														var day = date.getDay();
+														if(day==0 || day==1){
+															return [false];
+														}
+														else{
+															return [true];
+														}
+												}"
+									class="caixaTexto2" id="inline" mode="inline" locale="pt"
+									showButtonPanel="true" navigator="true"
+									value="#{agendamentoMB.agendamento.data}" mindate="new Date()"
+									required="true" requiredMessage="Campo data obrigatório!">
+								</p:calendar> <h:commandButton class="botao4" value="Clique para carregar os horários"
+									action="#{agendamentoMB.carregarHorarios}" /></td>
+						</tr>
+						<tr>
+							<td><span class="lbl">Horário:</span></td>
+						</tr>
+						<tr>
+							<td><h:selectOneMenu class="caixaTexto"
+									value="#{agendamentoMB.agendamento.horario}" id="cbbHorarios">
+									<f:selectItems value="#{agendamentoMB.horariosDisponiveis}"
+										required="true" requiredMessage="Campo horário obrigatório!" />
+								</h:selectOneMenu></td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td><p:commandButton class="botao" value="Alterar"
+									action="#{agendamentoMB.atualizar}">
+									<p:confirm header="Confirmação"
+										message="Tem certeza que deseja alterar os dados deste agendamento?"
+										icon="ui-icon-alert" />
+
+								</p:commandButton></td>
+							<td><p:commandButton class="botao" value="Cancelar"
+									action="index?faces-redirect=true" /></td>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+
+						</tr>
+					</table>
+				</h:form>
+			</div>
+		</section>
+		<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect -
+			Todos os direitos reservados.</footer>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<link rel="SHORTCUT ICON" href="img/favicon.ico"></link>
+	<link href="css/style.css" rel="stylesheet"></link>
+	<title>Agendar</title>
+	<style>
+#lojas {
+	width: 250px;
+	margin: auto;
+	margin-top: 40px;
+}
+
+#lojas legend {
+	text-align: left;
+	font-weight: bold;
+	font-size: 20px;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form>
+		<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+			<section id="paginaMaior">
+				<div id="conteudo3">
+					<h3>
+						É a sua primeira vez aqui?
+						<h:outputLink value="cadastrarCliente.xhtml">
+							<u>Cadastre o seu CPF</u>
+						</h:outputLink>
+					</h3>
+					<h3>
+						Quer alterar ou excluir um agendamento? Acesse a
+						<h:outputLink value="areaCliente.xhtml">
+							<u>Área do Cliente</u>
+						</h:outputLink>
+					</h3>
+					<span class="lbl">Selecione Serviço - Loja - Profissional:</span>
+					<fieldset id="lojas">
+						<legend>Identificação das Lojas</legend>
+						Loja 1: Vila Carrão <br /> Loja 2: Cj. José Bonifácio
+					</fieldset>
+					<br />
+					<h:selectOneMenu class="caixaTexto" id="cbbEspecialidades"
+						value="#{agendamentoMB.especialidade.id_especialidade}"
+						required="true" style="comboBox">
+						<p:ajax listener="#{agendamentoMB.carregarProfissionais}" update="cbbProfissionais" />
+						<f:selectItems value="#{agendamentoMB.lstEspecialidade}"
+							var="especialidade" itemValue="#{especialidade.id_especialidade}"
+							itemLabel="#{especialidade.descricao}" />
+
+					</h:selectOneMenu>
+					<br />
+					<h:selectOneMenu class="caixaTexto" id="cbbProfissionais"
+						value="#{agendamentoMB.profissional.id}" style="comboBox" required="true" requiredMessage="Campo Profissional nõa pode ser vazio!">
+						<f:selectItems value="#{agendamentoMB.lstProfissionais}"
+							var="profissional" itemValue="#{profissional.id}"
+							itemLabel="#{profissional.nome}" />
+					</h:selectOneMenu>
+					<br />
+					<h:commandButton class="botao" value="Ok"
+						action="#{agendamentoMB.redirecionarPagina}" />
+							
+					<h4>
+						Está com dificuldade? Acesse o
+						<h:outputLink value="manual.xhtml">
+							<u>Manual do Sistema</u>
+						</h:outputLink>
+					</h4>						
+				</div>
+
+			</section>
+			<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect - Todos os
+				direitos reservados.</footer>
+		</div>
+	</h:form>
+</h:body>
+</html>

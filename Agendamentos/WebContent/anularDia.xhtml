@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<link rel="SHORTCUT ICON" href="img/favicon.ico" />
+	<title>Anular dia</title>
+	<link href="css/style.css" rel="stylesheet" />
+	<script>
+		PrimeFaces.locales['pt'] = {
+			closeText : 'Fechar',
+			prevText : 'Anterior',
+			nextText : 'Próximo',
+			currentText : 'Começo',
+			monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+					'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+					'Novembro', 'Dezembro' ],
+			monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+					'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+			dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+					'Sexta', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+			dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+			weekHeader : 'Semana',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Só Horas',
+			timeText : 'Tempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			currentText : 'Data Atual',
+			ampm : false,
+			month : 'Mês',
+			week : 'Semana',
+			day : 'Dia',
+			allDayText : 'Todo Dia'
+		};
+	</script>
+</h:head>
+<h:body>
+	<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+		<section>
+			<div id="conteudo6">
+				<h1>Anule um dia, torne-o indisponível para agendamentos com um
+					profissional! Preencha os campos abaixo:</h1>
+				<h:form id="formBody">
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" globalOnly="true" />
+					<p:growl id="growl" showDetail="false" sticky="true" />
+					<table>
+						<tr>
+							<td><span class="lbl">Profissional:</span></td>
+						</tr>
+						<tr>
+							<td><h:selectOneMenu class="caixaTexto"
+									id="cbbProfissionais" value="#{agendamentoMB.profissional.id}"
+									style="comboBox">
+									<f:selectItems value="#{agendamentoMB.todosProfissionais}"
+										var="profissional" itemValue="#{profissional.id}"
+										itemLabel="#{profissional.nome}" />
+								</h:selectOneMenu></td>
+						</tr>
+						<tr>
+							<td><span class="lbl">Data:</span></td>
+						</tr>
+						<tr  id="zoomp">
+							<td><p:calendar
+									beforeShowDay="function(date){
+														var day = date.getDay();
+														if(day==0 || day==1){
+															return [false];
+														}
+														else{
+															return [true];
+														}
+												}"
+									class="caixaTexto2" id="inline" mode="inline" locale="pt"
+									showButtonPanel="true" navigator="true"
+									value="#{agendamentoMB.agendamento.data}" mindate="new Date()"
+									required="true" requiredMessage="Favor selecionar uma data!">
+								</p:calendar></td>
+						</tr>
+					</table>
+					<table id="afastaUltimo">
+						<tr>
+							<td><p:commandButton class="botao" value="Anular dia"
+									action="#{agendamentoMB.preencherDia}">
+									<p:confirm header="Confirmação"
+										message="Tem certeza que deseja anular o dia para não receber agendamentos?"
+										icon="ui-icon-alert" />
+								</p:commandButton></td>
+							<td><p:commandButton class="botao" value="Cancelar"
+									action="areaRestrita?faces-redirect=true" /></td>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+
+						</tr>
+					</table>
+				</h:form>
+			</div>
+		</section>
+		<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect -
+			Todos os direitos reservados.</footer>
+	</div>
+</h:body>
+</html>

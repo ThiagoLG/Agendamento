@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<link rel="SHORTCUT ICON" href="img/favicon.ico" />
+	<link href="css/style.css" rel="stylesheet" />
+	<title>Adicionar serviço</title>
+</h:head>
+<h:body>
+	<div class="container">
+		<header id="header">
+			<h:outputLink value="index.xhtml">
+				<img id="logonovo" src="img/logomodify.png"></img>
+			</h:outputLink>
+			<div id="restrita">
+				<h:outputLink value="areaRestrita.xhtml">
+					<f:verbatim>Área restrita</f:verbatim>
+				</h:outputLink>
+			</div>
+			<div id="restrita">
+				<h:outputLink value="contato.xhtml">
+					<f:verbatim>Contato</f:verbatim>
+				</h:outputLink>
+			</div>
+		</header>
+		<section id="pequena">
+			<div id="conteudo2">
+				<h1>Adicione um novo serviço! Preencha os campos abaixo:</h1>
+				<h:form id="formBody">
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" globalOnly="true" />
+					<p:growl id="growl" showDetail="false" sticky="true" />
+					<table>
+						<tr>
+							<td><span class="lbl">Nome do profissional:</span></td>
+						</tr>
+						<tr>
+							<td><h:inputText id="txtNome"
+									value="#{agendamentoMB.profissional.nome}" required="true"
+									requiredMessage="Campo nome obrigatório!" /></td>
+						</tr>
+						<tr>
+							<td><span class="lbl">Nome do serviço:</span></td>
+						</tr>
+						<tr>
+							<td><h:inputText id="txtServico"
+									value="#{agendamentoMB.profissional.especialidade}"
+									required="true" requiredMessage="Campo serviço obrigatório!" />
+							</td>
+						</tr>
+						<tr>
+							<td><span class="lbl">Loja:</span></td>
+						</tr>
+						<tr>
+							<td><h:selectOneMenu class="caixaTexto" id="cbbLoja"
+									value="#{agendamentoMB.profissional.loja}" required="true"
+									style="comboBox">
+									<f:selectItem itemValue="loja 1"
+										itemLabel="Loja 1 - Vila Carrão" />
+									<f:selectItem itemValue="loja 2"
+										itemLabel="Loja 2 - Cj. José Bonifácio" />
+								</h:selectOneMenu></td>
+						</tr>
+					</table>
+					<table id="afastaUltimo">
+						<tr>
+							<td><h:commandButton class="botao" value="Adicionar"
+									action="#{agendamentoMB.adicionarProfissional}" /></td>
+							<td><input class="botao" type="reset" value="Limpar" /></td>
+						</tr>
+					</table>
+				</h:form>
+			</div>
+		</section>
+			<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect - Todos os
+				direitos reservados.</footer>
+	</div>
+</h:body>
+</html>

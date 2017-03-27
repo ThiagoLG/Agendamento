@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Agendamento</title>
+
+</h:head>
+<h:body>
+	<h:form>
+		<h:outputText value="Agenda de: " />
+		<h:outputLabel id="txtEspec"
+			value="#{agendamentoMB.especialidade.descricao}" />
+
+
+		<h:panelGrid columns="2">
+			<tr>
+				<td><h:outputLabel value="nome" /></td>
+				<td><h:inputText id="txtNome"
+						value="#{agendamentoMB.agendamento.nome}"></h:inputText></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="telefone" /></td>
+				<td><h:inputText id="txtTelefone"
+						value="#{agendamentoMB.agendamento.telefone}" /></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="email" /></td>
+				<td><h:inputText id="txtEmail"
+						value="#{agendamentoMB.agendamento.email}"></h:inputText></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="Data" /></td>
+				<td><p:calendar id="popup"
+						value="#{agendamentoMB.agendamento.data}">
+					</p:calendar></td>
+			</tr>
+
+
+			<tr>
+				<td><h:selectOneMenu
+						value="#{agendamentoMB.agendamento.horario}" id="cbbHorarios">
+						<f:selectItems value="#{agendamentoMB.horariosDisponiveis}" />
+					</h:selectOneMenu></td>
+				<td><h:commandButton value="clica aqui"
+						action="#{agendamentoMB.carregarHorarios}" /></td>
+			</tr>
+
+			<tr>
+				<td><h:commandButton value="adiciona"
+						action="#{agendamentoMB.cadastrar}" /></td>
+			</tr>
+			<tr>
+				<td><h:commandButton value="preencher dia"
+						action="#{agendamentoMB.preencherDia}" /></td>
+			</tr>
+
+		</h:panelGrid>
+
+
+	</h:form>
+</h:body>
+</html>

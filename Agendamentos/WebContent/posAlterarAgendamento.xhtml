@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"/>
+	<link rel="SHORTCUT ICON" href="img/favicon.ico"/>
+	<link href="css/style.css" rel="stylesheet"/>
+	<title>Agendamento alterado!</title>
+	<style>
+		#listaLinks li{
+			font-size: 20px;
+			list-style: none;
+		}
+	</style>
+</h:head>
+<h:body>
+	<div class="container">
+			<header id="header">
+				<h:outputLink value="index.xhtml">
+					<img id="logonovo" src="img/logomodify.png"></img>
+				</h:outputLink>
+				<div id="submenu">
+					<ul>
+						<li>
+							<h:outputLink value="areaRestrita.xhtml">
+								<f:verbatim>Área restrita</f:verbatim>
+							</h:outputLink>
+						</li>
+						<li>|</li>
+						<li>
+							<h:outputLink value="contato.xhtml">
+								<f:verbatim>Contato</f:verbatim>
+							</h:outputLink>
+						</li>
+					</ul>
+				</div>
+			</header>
+		<section id="pequena">
+			<div id="conteudo">
+				<span class="lbl">
+					Seu agendamento foi alterado com sucesso!
+					<br/>
+					<ul id="listaLinks">
+						<li>
+							Para novos agendamentos, clique <h:outputLink value="index.xhtml">
+																<f:verbatim>[aqui]</f:verbatim>
+															</h:outputLink>.
+						</li>
+						<li>
+							Para saber os telefones de contato ou como chegar, clique 	<h:outputLink value="contato.xhtml">
+																							<f:verbatim>[aqui]</f:verbatim>
+																						</h:outputLink>.
+						</li>
+						<li>
+							Se você é um administrador e deseja voltar para a área restrita, clique  	<h:outputLink value="areaRestrita.xhtml">
+																											<f:verbatim>[aqui]</f:verbatim>
+																										</h:outputLink>.
+						</li>
+					</ul>
+				</span>
+			</div>
+		</section>
+			<footer>2017 © Victor Viegas / Thiago Lourençon | Prospect - Todos os
+				direitos reservados.</footer>
+	</div>
+</h:body>
+</html>
